@@ -1,15 +1,14 @@
-import java.io.BufferedReader;
+package MorseHandler;
+
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Map;
 
 public class MorseTranslator {
-    private static Map<Character,String> morse;
+    private static final Map<Character,String> morse;
 
     static {
         try {
-            morse = MorseFileReader.readMorseMap("src/sources/morse.txt");
+            morse = MorseFileReader.readMorseMap("src/MorseHandler/sources/morse.txt");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -18,7 +17,7 @@ public class MorseTranslator {
     public static String Translator(String input)
     {
         if(input==null || input.isEmpty())
-            return "!!!!";
+           return "";
         StringBuilder builder=new StringBuilder();
         for(int i=0;i<input.length();i++)
         {
@@ -27,7 +26,7 @@ public class MorseTranslator {
                 builder.append('/');
            else{
                String code=morse.get(c);
-               if(!code.isEmpty())
+                if(code != null && !code.isEmpty())
                    builder.append(code);
                else
                    builder.append(' ');
