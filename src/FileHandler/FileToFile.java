@@ -4,13 +4,13 @@ import java.io.*;
 import MorseHandler.MorseTranslator;
 public class FileToFile {
 
-    public static void FileToFileTranslation(String sourcePath)
+    public static File FileToFileTranslation(String sourcePath)
     {
         File source=new File(sourcePath);
         if(!(source.exists()))
         {
             System.out.println("Doesn't exist.");
-            return;
+            return null;
         }
 
         String parentdDirectory=source.getParent();
@@ -38,7 +38,7 @@ public class FileToFile {
         catch (IOException e) {
             throw new RuntimeException(e);
         }
-
+        return newFile;
     }
 
 }

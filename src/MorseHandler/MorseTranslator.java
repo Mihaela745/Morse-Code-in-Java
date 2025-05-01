@@ -22,7 +22,7 @@ public class MorseTranslator {
         for(int i=0;i<input.length();i++)
         {
             char c=Character.toUpperCase(input.charAt(i));
-            if(Character.compare(c,' ')==0)
+            if(c==' ')
                 builder.append('/');
            else{
                String code=morse.get(c);
